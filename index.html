@@ -133,7 +133,7 @@
 
   <div id="id01" class="modal">
     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    <form class="modal-content" action="" method="post">
+    <form class="modal-content">
       <div class="container">
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
@@ -167,7 +167,7 @@
 
         <div class="clearfix">
           <button type="button" onclick="document.getElementById('id01').style.display='none'" class="w3-bar-item w3-button w3-padding-large w3-purple">Cancel</button>
-          <button type="submit" onclick="saveData();" class="w3-bar-item w3-button w3-padding-large w3-purple">Sign Up</button>
+          <button type="submit" class="w3-bar-item w3-button w3-padding-large w3-purple">Sign Up</button>
         </div>
       </div>
     </form>
@@ -182,11 +182,6 @@
       if (event.target == modal) {
         modal.style.display = "none";
       }
-    }
-
-    function saveData()
-    {
-      
     }
   </script>
 
@@ -242,19 +237,5 @@
   </script>
 
 </body>
-
-<script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAbnq29I3Vuqx-e0TMPqtopdIhPChWBnyM",
-    authDomain: "memesfordreamsdatabase.firebaseapp.com",
-    databaseURL: "https://memesfordreamsdatabase.firebaseio.com",
-    projectId: "memesfordreamsdatabase",
-    storageBucket: "memesfordreamsdatabase.appspot.com",
-    messagingSenderId: "1039713905356"
-  };
-  firebase.initializeApp(config);
-</script>
 
 </html>
