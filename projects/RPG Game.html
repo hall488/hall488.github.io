@@ -12,15 +12,16 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-clock,.fa-hand-holding-usd {font-size:200px}
 </style>
+
 <body>
 
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-teal w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-teal" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-    <a href="projects.html" class="w3-bar-item w3-button w3-padding-large w3-white">Projects</a>    
-    <a href="resume.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Resume/CV</a>
+    <a href="../index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+    <a href="../projects.html" class="w3-bar-item w3-button w3-padding-large w3-white">Projects</a>    
+    <a href="../resume.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Resume/CV</a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -37,28 +38,82 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 </header>
 
 <!-- First Grid -->
-<div class="w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-twothird">
-      <h1>Omni-Wheel Ping Pong Robot</h1>
-      <h5 class="w3-padding-32">Work in progress. Omni-directional robot that picks up ping pong balls and shoots them into cups.</h5>        
-    </div>
+<div class="w3-row-padding w3-padding-64 w3-container" id="Introduction">
+  <div class="w3-content" style="max-width:70%">
+    <div class="w3-half" style="padding-right: 64px;" >
+      <h1>RPG Game</h1>
+      <h5 class="w3-padding-32">Work in progress. This is a hulk of a project. I likely will not finish this anytime soon considering, I have already put a week of effort into this and I am only about 5% done.
+         I will just go over some of the interesting problems I have faced so far. All the source code is on <a style="color:teal" target="_blank" href="https://github.com/hall488/RPG-Game">Github</a>.
+        <br><br>
+        <b>Introduction</b>
+        <br>Gloomhaven is a role playing board game. It is Dungeons and Dragonesque in theme but does not have any dialog exchanges. The story is static between play throughs, but it has altering paths, difficulties, and characters.
+        <br><br><b>Table of Contents</b>
+        <br><a href="#Introduction">Introduction</a>
+        <br><a href="#Bitmap">Bitmap</a>
+        <br><a href="#Robot Pictures">Robot Pictures</a>
+        <br><a href="#Competition Description">Competition Description</a>
+        <br><a href="#Code">Code</a>
+        <br><a href="#Potential Improvements">Potential Improvements</a>
+      </h5>
 
-    <div class="w3-third w3-center">
-      <img src="robot.png" class="w3-padding-64 w3-text-teal" style="width:90%"></img>
+      
+    </div>
+    <div class="w3-rest" >
+      
+      <iframe width="100%" height="500px" allow="fullscreen;" 
+        src="https://www.youtube.com/embed/aUE-x8eCg6g">
+      </iframe> 
     </div>
   </div>
 </div>
 
 <!-- Second Grid -->
-<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-third w3-center">
-      <img src="rpg.png" class="w3-padding-64 w3-text-teal" style="width:90%"></img>
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="Bitmap">
+  <div class="w3-content" style="max-width:70%" >
+    <div class="w3-half ">
+      <h1>Bitmap</h1>
+      <h5 class="w3-padding-32">The majority of data for current state of the game is stored in a bitmap. It is a X by X 2 dimensional array. Each bit in the map can be a different character that describes a player, 
+        enemy, doorway, etc. Each game level can be loaded from a textfile like the one to the right. The text file is run through a file stream that can then send each character from the text file to a respective bitmap position.
+       An important note is that the game is made of hexagons. This means that every other row is shifted half a hex over. </h5>        
     </div>
-    <div class="w3-twothird">
-      <h1>RPG Game</h1>
-      <h5 class="w3-padding-32">Work in progress. This is a video game version of the board game Gloomhaven. </h5>        
+    <div class="w3-rest">
+      <div class="w3-content" style = "width: 50%; margin-left: auto; margin-right: auto; ">
+        <script src="https://gist.github.com/hall488/844088c4a2e5fa5b4c8137636cdb5f02.js"></script>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content" style="max-width:70%">
+    <div class="w3-half" style="padding-right: 64px;">
+      
+      <iframe width="100%" height="500px" allow="fullscreen;" 
+        src="https://www.youtube.com/embed/DpQCHNgTUgg">
+      </iframe> 
+    </div>
+
+    <div class= "w3-rest">
+      <h5> This video demos the capabilities of the bitmap. The starting positions are all described by the same text file. However, as play progresses the bitmap can update.
+         There are some cool player friendly additions I made that I will jsut gloss over. The way the game tracks the mouse only allows for the player to select open hexagons.
+          In other words, the player cannot move into an enemy or a block outside of the dungeon even though these hexagons exist in the bitmap. Also notice that the red hex that highlights the hex your mouse if hovering
+          will automatically snap to the hexagon closest to the mouse. This way you can see which direction your mouse is if its off screen. It also lets you have more space for clicking. The next topic I will dive into that
+          is the way the player moves around the bitmap.
+
+    </div>  
+  </div>
+</div>
+
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="Movement">
+  <div class="w3-content" style="max-width:70%" >
+    <div class="w3-half ">
+      <h1>Bitmap</h1>
+      <h5 class="w3-padding-32">The majority of data for current state of the game is stored in a bitmap. It is a X by X 2 dimensional array. Each bit in the map can be a different character that describes a player, 
+        enemy, doorway, etc. Each game level can be loaded from a textfile like the one to the right. The text file is run through a file stream that can then send each character from the text file to a respective bitmap position.
+       An important note is that the game is made of hexagons. This means that every other row is shifted half a hex over. </h5>        
     </div>
     
   </div>
