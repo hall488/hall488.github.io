@@ -6,12 +6,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="../css/carousel.css">
 <script src="https://kit.fontawesome.com/eedd958231.js" crossorigin="anonymous"></script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-clock,.fa-hand-holding-usd {font-size:200px}
 </style>
+
 
 <body>
 
@@ -110,11 +112,86 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container" id="Movement">
   <div class="w3-content" style="max-width:70%" >
     <div class="w3-half ">
-      <h1>Bitmap</h1>
-      <h5 class="w3-padding-32">The majority of data for current state of the game is stored in a bitmap. It is a X by X 2 dimensional array. Each bit in the map can be a different character that describes a player, 
-        enemy, doorway, etc. Each game level can be loaded from a textfile like the one to the right. The text file is run through a file stream that can then send each character from the text file to a respective bitmap position.
-       An important note is that the game is made of hexagons. This means that every other row is shifted half a hex over. </h5>        
+      <h1>Movement</h1>
+      <h5 class="w3-padding-32">In the video, you may notice that player will avoid walls and enemies automatically when pathing. This was on purpose and was quite difficult. The way the algorithm works in principle is
+        similar to the way water would act if it was poured over a maze. Starting from the player different pathes are erected and tracked. Look to the image slides. Pretend the red hexagon is where the movement starts and the blue hexagon is 
+        where it is going to finish. Although normally, the wizard would be the starts and the mouse clicked red hex would be the end. I just felt this made the algorithm easier to visualize. As the arrows radiate outwards, they do not overlap.
+        The algorithm will track each arrow and store all arrows in a path. On each iteration, none of the hexagons are revisited. Once the final hex is reached, the algorithm stops and checks to make sure that the quickest pathes
+        is returned. Sometimes the algorithm will double up on a hexagon in a single iteration, but that is to solve for a possibility of not finding the quickest path but one from the quickest path. It still essenstially works the same.
+      </h5>        
     </div>
+
+    <div class="w3-rest">
+            <!-- Slideshow container -->
+      <div class="slideshow-container" style = "width: 75%; margin-left: auto; margin-right: auto;">
+
+        <!-- Full-width images with number and caption text -->
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 4</div>
+          <img src="../pics/rpg_movement_1.png" style="width: 100%;">
+          <div class="text">The algorithm moves out 1 hex in each direction</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <img src="../pics/rpg_movement_2.png" style="width:100%">
+          <div class="text">It moves further out but does not repeat hexes</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 4</div>
+          <img src="../pics/rpg_movement_3.png" style="width:100%">
+          <div class="text">Continues to move out not pushing past walls</div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <img src="../pics/rpg_movement_4.png" style="width:100%">
+          <div class="text">Finds the destination hex and picks the shortest path</div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+
+      <!-- The dots/circles -->
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+      }
+      </script>
     
   </div>
 </div>
