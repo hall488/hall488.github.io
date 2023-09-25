@@ -1,0 +1,1 @@
+(self.webpackChunkpersonal_portfolio=self.webpackChunkpersonal_portfolio||[]).push([[143],{880:()=>{}},o=>{o(o.s=880)}]);
