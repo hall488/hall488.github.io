@@ -1,6 +1,13 @@
 import styleSheet from "./style.css";
 import DropDown from "./drop-down";
 import "devicon";
+import HomeHTML from "./home.html";
+import Projects from "./projects";
+import ProjectsHTML from "./projects.html";
+import Blog from "./blog";
+import BlogHTML from "./blog.html";
+import Resume from "./resume";
+import ResumeHTML from "./resume.html";
 
 DropDown();
 
@@ -39,6 +46,8 @@ let header = document.querySelector(".header");
 let container = document.querySelector(".container");
 let footer = document.querySelector(".footer");
 
+container.innerHTML = HomeHTML;
+
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     header.style.opacity = "100%";
@@ -48,4 +57,41 @@ document.addEventListener("DOMContentLoaded", () => {
     //document.querySelector(".intro-profile > img").src = lobster;
     switchColorMode();
   }, 250);
+});
+
+const Home = () => {};
+
+const navigatePage = (page) => {
+  let html;
+  let js;
+  switch (page) {
+    case "Home":
+      js = Home;
+      html = HomeHTML;
+      break;
+    case "Projects":
+      js = Projects;
+      html = ProjectsHTML;
+      break;
+    case "Blog":
+      js = Blog;
+      html = BlogHTML;
+      break;
+    case "Resume":
+      js = Resume;
+      html = ResumeHTML;
+      break;
+  }
+
+  container.innerHTML = html;
+  js();
+};
+
+const menuBtns = document.querySelectorAll(".drop-down > .menu > li");
+
+[...menuBtns].forEach((b) => {
+  b.addEventListener("click", () => {
+    let page = b.querySelector("div").textContent;
+    navigatePage(page);
+  });
 });
