@@ -43,6 +43,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin({
       patterns: [{ from: "src/assets", to: "assets", force: true }],
+      patterns: [{ from: "CNAME", force: true }],
     }),
   ],
   output: {
