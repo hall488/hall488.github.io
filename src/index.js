@@ -11,6 +11,14 @@ import ResumeHTML from "./resume.html";
 
 DropDown();
 
+var firstTime = localStorage.getItem("first_time");
+if (!firstTime) {
+  localStorage.setItem("first_time", "1");
+} else {
+  console.log("test");
+  window.location.href = "https://www.christopherh.org/Personal-Portfolio/";
+}
+
 const colorModeEl = document.querySelector(".color-mode");
 const r = document.querySelector(":root");
 
