@@ -11,11 +11,9 @@ import ResumeHTML from "./resume.html";
 
 DropDown();
 
-var firstTime = localStorage.getItem("first_time");
+let firstTime = localStorage.getItem("first_time");
 if (!firstTime) {
   localStorage.setItem("first_time", "1");
-} else {
-  console.log("test");
   window.location.href = "https://www.christopherh.org/Personal-Portfolio/";
 }
 
