@@ -27,6 +27,12 @@ const switchColorMode = () => {
     `var(--${colorMode}-mode-secondary)`
   );
 
+  let rs = getComputedStyle(r);
+
+  let strokeColor = rs.getPropertyValue("--current-secondary");
+
+  document.querySelector("#layer1").style.stroke = strokeColor;
+
   if (colorMode == "light") {
     colorModeEl.children[0].style.display = "flex";
     colorModeEl.children[1].style.display = "none";
