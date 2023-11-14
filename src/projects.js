@@ -1,5 +1,5 @@
 const Projects = () => {
-  console.log("in projects page");
+  window.location.replace("https://github.com/hall488");
 };
 
 export default Projects;
