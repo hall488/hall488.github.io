@@ -14,7 +14,7 @@ DropDown();
 let firstTime = localStorage.getItem("first_time");
 if (!firstTime) {
   localStorage.setItem("first_time", "1");
-  window.location.href = "https://www.christopherh.org/Personal-Portfolio/";
+  window.location.href = "https://ghp.christopherh.org/Personal-Portfolio/";
 }
 
 const colorModeEl = document.querySelector(".color-mode");
